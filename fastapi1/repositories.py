@@ -17,8 +17,8 @@ class ItemRepository:
         db.commit()
         return item
     @staticmethod
-    def encontrar_todos(db: Session) -> list[Item]:
-        return db.query(Item).all()
+    def encontrar_todos(db: Session, limite: int, deslocamento: int) -> list[Item]:
+        return db.query(Item).limit(limite).offset(deslocamento).all()
     @staticmethod
     def deletar_por_id(db: Session, id: int) -> None:
         item = db.query(Item).filter(Item.id == id).first()
