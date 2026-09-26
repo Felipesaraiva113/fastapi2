@@ -23,7 +23,7 @@
 - Limites por IP: `GET /itens/, GET /itens/{id}` -> `100/min`. `POST, PUT, DELETE` -> `10/min`. Docs -> `5/min`.
 - Chave por IP de cliente, respeitando proxy quando houver.
 
-## 4. CORS + TrustedHost — deferido para final do dev
+## 4. CORS + TrustedHost — implementado com placeholders via env, valores de prod pendentes
 - `fastapi1/main.py`: `CORSMiddleware` só com `ALLOWED_ORIGINS` listada, `allow_methods=[GET,POST,PUT,DELETE]`, `allow_headers=[X-API-Key,Content-Type]`, `allow_credentials=False`.
 - `TrustedHostMiddleware` com `ALLOWED_HOSTS`. Dev: `localhost,127.0.0.1`. Prod: a definir.
 - Origens prod a definir pelo dono antes do deploy.
@@ -69,6 +69,6 @@ SEED_ENABLED=true
 ## 10. Ordem de execução
 1. Env + `authentication.py` + wiring `main.py`.
 2. Schemas + paginação + repositories.
-3. Rate limit + docs protegidos + CORS/TrustedHost (quando origens definidas).
+3. Rate limit + docs protegidos + CORS/TrustedHost (placeholders via env, valores de prod pendentes).
 4. Banco/logs/seed trava + remover prints.
 5. Testes + `alembic upgrade head` + `seed` local + `uvicorn`.

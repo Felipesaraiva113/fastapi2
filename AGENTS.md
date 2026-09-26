@@ -19,6 +19,8 @@ REST API for hardware items (`nome`, `preco`, `em_oferta`). CRUD already works (
 ## Folder structure
 
 - `venv/` — local virtualenv (gitignored)
+- `requirements.txt` — pinned dependencies
+- `.env.example` — environment template without secrets (gitignored: `.env`)
 - `fastapi1/` — application code
 - `fastapi1/main.py` — FastAPI app, table create, router
 - `fastapi1/routes.py` — HTTP endpoints
@@ -28,6 +30,7 @@ REST API for hardware items (`nome`, `preco`, `em_oferta`). CRUD already works (
 - `fastapi1/database.py` — engine, session, `get_db`
 - `fastapi1/authentication.py` — API key check for write routes
 - `fastapi1/seed.py` — inserts one sample item
+- `fastapi1/tests/` — pytest suite
 - `fastapi1/db.sqlite3` — SQLite file (gitignored)
 - `fastapi1/alembic.ini` — Alembic config and DB URL
 - `fastapi1/alembic/` — migrations

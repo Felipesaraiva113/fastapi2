@@ -33,7 +33,7 @@ def cliente(tmp_path):
             banco.close()
     app.dependency_overrides[get_db] = get_db_teste
     limiter._storage.reset()
-    with TestClient(app) as teste:
+    with TestClient(app, base_url='http://localhost') as teste:
         yield teste
     app.dependency_overrides.clear()
     limiter._storage.reset()
