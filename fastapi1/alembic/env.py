@@ -14,6 +14,8 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 config = context.config
 load_dotenv(Path(__file__).resolve().parent.parent.parent / '.env', override=True)
 url_banco = os.getenv('DATABASE_URL')
+if url_banco and url_banco.startswith('postgres'):
+    url_banco = url_banco.replace('postgresql://', 'postgresql+psycopg://').replace('postgres://', 'postgresql+psycopg://')
 if url_banco:
     config.set_main_option('sqlalchemy.url', url_banco)
 
